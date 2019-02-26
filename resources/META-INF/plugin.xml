@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.nots.intellij</id>
     <name>Nots.io</name>
-    <version>1.1</version>
+    <version>1.3</version>
     <vendor email="point@nots.io">Nots.io</vendor>
 
     <description><![CDATA[

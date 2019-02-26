@@ -3,17 +3,14 @@ package io.nots.intellij;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vcs.VcsException;
-import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
-import com.intellij.vcsUtil.VcsUtil;
-import git4idea.GitRevisionNumber;
-import git4idea.history.GitHistoryUtils;
+import git4idea.branch.GitBranchUtil;
+import git4idea.repo.GitRepository;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -50,11 +47,14 @@ public class ProjectFilesUtils {
     public static String getProjectRootGitSHA(Project project) {
         try {
             VirtualFile virtualFile = LocalFileSystem.getInstance().findFileByPath(project.getBasePath());
-            VcsRevisionNumber revisionNumber = GitHistoryUtils.getCurrentRevision(project, VcsUtil.getFilePath(virtualFile), null);
-            if (revisionNumber !=null && revisionNumber instanceof GitRevisionNumber) {
-                return GitRevisionNumber.class.cast(revisionNumber).getRev();
+            GitRepository repo = GitBranchUtil.getCurrentRepository(project);
+            if (repo instanceof GitRepository) {
+                //GitLocalBranch lb = repo.getCurrentBranch();
+
+                //VcsRevisionNumber revisionNumber = GitHistoryUtils.getCurrentRevision(project, VcsUtil.getFilePath(virtualFile), lb.getName());
+                return repo.getCurrentRevision();
             }
-        } catch (VcsException ignore) {
+        } catch (Exception ignore) {
 
         }
         return null;
