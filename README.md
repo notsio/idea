@@ -50,5 +50,5 @@ Switch to your ItelliJ IDEA/PhpStorm/WebStorm/PyCharm/RubyMine and paste the key
 
 ## Release Notes
 
-### 1.4
+### 1.5
 Stable release with proper README
