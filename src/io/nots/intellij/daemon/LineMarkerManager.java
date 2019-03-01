@@ -28,7 +28,7 @@ public class LineMarkerManager {
                         ApplicationManager.getApplication().invokeLater(() ->
                                 ApplicationManager.getApplication().runReadAction(new NotsProjectsProcessor()));
                         try {
-                            Thread.sleep(10000);
+                            Thread.sleep(30000);
                         } catch (InterruptedException e) {
                             stop = true;
                         }

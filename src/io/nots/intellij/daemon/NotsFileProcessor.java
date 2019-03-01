@@ -104,7 +104,7 @@ public class NotsFileProcessor implements Runnable {
 
         for (NotsIcon notsIcon : icons) {
 
-            int startOffset = ProjectFilesUtils.getStartOffset(psiFile, notsIcon.lineNumber - 1);
+            int startOffset = ProjectFilesUtils.getStartOffset(psiFile, notsIcon.lineNumber);
             PsiElement psiElement = ProjectFilesUtils.getElementAtLine(psiFile, startOffset);
 
             try {
